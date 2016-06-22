@@ -33,6 +33,7 @@ public class Matcher {
 			return;
 		}
 		buildPatternMap();
+		System.out.println(patternMap);
 		matchPaths(args[1]);
 	}
 	
@@ -127,6 +128,7 @@ public class Matcher {
 		Map<String, Field> map = patternMap;
 		
 		for (String segment : pathSplit) {
+			if (segment.equals("")) continue;
 			if (map.containsKey(segment)) {
 				pattern.append(segment).append(',');
 				map = map.get(segment).getFields();
